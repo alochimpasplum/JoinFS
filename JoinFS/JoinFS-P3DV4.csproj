@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JoinFS</RootNamespace>
-    <AssemblyName>JoinFS-P3DV4</AssemblyName>
+    <AssemblyName>JoinFS%28SO%29-P3DV4</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>

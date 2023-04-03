@@ -95,9 +95,9 @@
             // 
             // Tool_Version
             // 
-            resources.ApplyResources(this.Tool_Version, "Tool_Version");
             this.Tool_Version.ActiveLinkColor = System.Drawing.Color.Blue;
             this.Tool_Version.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.Tool_Version, "Tool_Version");
             this.Tool_Version.ForeColor = System.Drawing.Color.Gray;
             this.Tool_Version.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.Tool_Version.LinkColor = System.Drawing.Color.DodgerBlue;
@@ -105,7 +105,6 @@
             // 
             // Tool_Map
             // 
-            resources.ApplyResources(this.Tool_Map, "Tool_Map");
             this.Tool_Map.ActiveLinkColor = System.Drawing.Color.Blue;
             this.Tool_Map.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.Tool_Map.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -114,21 +113,22 @@
             this.Tool_Map.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.Tool_Map.LinkColor = System.Drawing.Color.DodgerBlue;
             this.Tool_Map.Name = "Tool_Map";
+            resources.ApplyResources(this.Tool_Map, "Tool_Map");
             this.Tool_Map.Click += new System.EventHandler(this.Tool_Map_Click);
             // 
             // Tool_Users
             // 
-            resources.ApplyResources(this.Tool_Users, "Tool_Users");
             this.Tool_Users.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.Tool_Users.ForeColor = System.Drawing.Color.Gray;
             this.Tool_Users.Name = "Tool_Users";
+            resources.ApplyResources(this.Tool_Users, "Tool_Users");
             // 
             // Tool_Update
             // 
-            resources.ApplyResources(this.Tool_Update, "Tool_Update");
             this.Tool_Update.ActiveLinkColor = System.Drawing.Color.Blue;
             this.Tool_Update.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.Tool_Update.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.Tool_Update, "Tool_Update");
             this.Tool_Update.ForeColor = System.Drawing.Color.DodgerBlue;
             this.Tool_Update.IsLink = true;
             this.Tool_Update.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
@@ -145,25 +145,25 @@
             // 
             // Combo_Join
             // 
-            resources.ApplyResources(this.Combo_Join, "Combo_Join");
             this.Combo_Join.DropDownWidth = 200;
             this.Combo_Join.FormattingEnabled = true;
+            resources.ApplyResources(this.Combo_Join, "Combo_Join");
             this.Combo_Join.Name = "Combo_Join";
             // 
             // Button_Simulator
             // 
-            resources.ApplyResources(this.Button_Simulator, "Button_Simulator");
             this.Button_Simulator.BackColor = System.Drawing.SystemColors.Control;
             this.Button_Simulator.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.Button_Simulator, "Button_Simulator");
             this.Button_Simulator.Name = "Button_Simulator";
             this.Button_Simulator.UseVisualStyleBackColor = false;
             this.Button_Simulator.Click += new System.EventHandler(this.Button_Simulator_Click);
             // 
             // Button_Network
             // 
-            resources.ApplyResources(this.Button_Network, "Button_Network");
             this.Button_Network.BackColor = System.Drawing.SystemColors.Control;
             this.Button_Network.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.Button_Network, "Button_Network");
             this.Button_Network.Name = "Button_Network";
             this.Button_Network.UseVisualStyleBackColor = false;
             this.Button_Network.Click += new System.EventHandler(this.Button_Network_Click);
@@ -195,7 +195,6 @@
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_File_ScanModels,
             this.Menu_File_ModelMatching,
@@ -212,90 +211,90 @@
             this.toolStripMenuItem5,
             this.Menu_File_Exit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // Menu_File_ScanModels
             // 
-            resources.ApplyResources(this.Menu_File_ScanModels, "Menu_File_ScanModels");
             this.Menu_File_ScanModels.Name = "Menu_File_ScanModels";
+            resources.ApplyResources(this.Menu_File_ScanModels, "Menu_File_ScanModels");
             this.Menu_File_ScanModels.Click += new System.EventHandler(this.Menu_File_ScanModels_Click);
             // 
             // Menu_File_ModelMatching
             // 
-            resources.ApplyResources(this.Menu_File_ModelMatching, "Menu_File_ModelMatching");
             this.Menu_File_ModelMatching.Name = "Menu_File_ModelMatching";
+            resources.ApplyResources(this.Menu_File_ModelMatching, "Menu_File_ModelMatching");
             this.Menu_File_ModelMatching.Click += new System.EventHandler(this.Menu_File_ModelMatching_Click);
             // 
             // Menu_File_Variables
             // 
-            resources.ApplyResources(this.Menu_File_Variables, "Menu_File_Variables");
             this.Menu_File_Variables.Name = "Menu_File_Variables";
+            resources.ApplyResources(this.Menu_File_Variables, "Menu_File_Variables");
             this.Menu_File_Variables.Click += new System.EventHandler(this.Menu_File_Variables_Click);
             // 
             // Menu_File_Recorder
             // 
-            resources.ApplyResources(this.Menu_File_Recorder, "Menu_File_Recorder");
             this.Menu_File_Recorder.Name = "Menu_File_Recorder";
+            resources.ApplyResources(this.Menu_File_Recorder, "Menu_File_Recorder");
             this.Menu_File_Recorder.Click += new System.EventHandler(this.Menu_File_Recorder_Click);
             // 
             // toolStripMenuItem1
             // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // Menu_File_AddressBook
             // 
-            resources.ApplyResources(this.Menu_File_AddressBook, "Menu_File_AddressBook");
             this.Menu_File_AddressBook.Name = "Menu_File_AddressBook";
+            resources.ApplyResources(this.Menu_File_AddressBook, "Menu_File_AddressBook");
             this.Menu_File_AddressBook.Click += new System.EventHandler(this.Menu_File_AddressBook_Click);
             // 
             // Menu_File_Shortcuts
             // 
-            resources.ApplyResources(this.Menu_File_Shortcuts, "Menu_File_Shortcuts");
             this.Menu_File_Shortcuts.Name = "Menu_File_Shortcuts";
+            resources.ApplyResources(this.Menu_File_Shortcuts, "Menu_File_Shortcuts");
             this.Menu_File_Shortcuts.Click += new System.EventHandler(this.Menu_File_Shortcuts_Click);
             // 
             // Menu_File_Options
             // 
-            resources.ApplyResources(this.Menu_File_Options, "Menu_File_Options");
             this.Menu_File_Options.Name = "Menu_File_Options";
+            resources.ApplyResources(this.Menu_File_Options, "Menu_File_Options");
             this.Menu_File_Options.Click += new System.EventHandler(this.Menu_File_Options_Click);
             // 
             // toolStripMenuItem3
             // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             // 
             // Menu_File_SimComX
             // 
-            resources.ApplyResources(this.Menu_File_SimComX, "Menu_File_SimComX");
             this.Menu_File_SimComX.Name = "Menu_File_SimComX";
+            resources.ApplyResources(this.Menu_File_SimComX, "Menu_File_SimComX");
             this.Menu_File_SimComX.Click += new System.EventHandler(this.Menu_File_SimComX_Click);
             // 
             // toolStripMenuItem4
             // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             // 
             // Menu_File_Settings
             // 
-            resources.ApplyResources(this.Menu_File_Settings, "Menu_File_Settings");
             this.Menu_File_Settings.Name = "Menu_File_Settings";
+            resources.ApplyResources(this.Menu_File_Settings, "Menu_File_Settings");
             this.Menu_File_Settings.Click += new System.EventHandler(this.Menu_File_Settings_Click);
             // 
             // toolStripMenuItem5
             // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             // 
             // Menu_File_Exit
             // 
-            resources.ApplyResources(this.Menu_File_Exit, "Menu_File_Exit");
             this.Menu_File_Exit.Name = "Menu_File_Exit";
+            resources.ApplyResources(this.Menu_File_Exit, "Menu_File_Exit");
             this.Menu_File_Exit.Click += new System.EventHandler(this.Menu_Exit_Click);
             // 
             // viewToolStripMenuItem
             // 
-            resources.ApplyResources(this.viewToolStripMenuItem, "viewToolStripMenuItem");
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_View_Hubs,
             this.Menu_View_Atc,
@@ -304,46 +303,46 @@
             this.Menu_View_Objects,
             this.Menu_View_Monitor});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            resources.ApplyResources(this.viewToolStripMenuItem, "viewToolStripMenuItem");
             // 
             // Menu_View_Hubs
             // 
-            resources.ApplyResources(this.Menu_View_Hubs, "Menu_View_Hubs");
             this.Menu_View_Hubs.Name = "Menu_View_Hubs";
+            resources.ApplyResources(this.Menu_View_Hubs, "Menu_View_Hubs");
             this.Menu_View_Hubs.Click += new System.EventHandler(this.Menu_View_Hubs_Click);
             // 
             // Menu_View_Atc
             // 
-            resources.ApplyResources(this.Menu_View_Atc, "Menu_View_Atc");
             this.Menu_View_Atc.Name = "Menu_View_Atc";
+            resources.ApplyResources(this.Menu_View_Atc, "Menu_View_Atc");
             this.Menu_View_Atc.Click += new System.EventHandler(this.Menu_View_Atc_Click);
             // 
             // Menu_View_Session
             // 
-            resources.ApplyResources(this.Menu_View_Session, "Menu_View_Session");
             this.Menu_View_Session.Name = "Menu_View_Session";
+            resources.ApplyResources(this.Menu_View_Session, "Menu_View_Session");
             this.Menu_View_Session.Click += new System.EventHandler(this.Menu_View_Users_Click);
             // 
             // Menu_View_Aircraft
             // 
-            resources.ApplyResources(this.Menu_View_Aircraft, "Menu_View_Aircraft");
             this.Menu_View_Aircraft.Name = "Menu_View_Aircraft";
+            resources.ApplyResources(this.Menu_View_Aircraft, "Menu_View_Aircraft");
             this.Menu_View_Aircraft.Click += new System.EventHandler(this.Menu_View_Aircraft_Click);
             // 
             // Menu_View_Objects
             // 
-            resources.ApplyResources(this.Menu_View_Objects, "Menu_View_Objects");
             this.Menu_View_Objects.Name = "Menu_View_Objects";
+            resources.ApplyResources(this.Menu_View_Objects, "Menu_View_Objects");
             this.Menu_View_Objects.Click += new System.EventHandler(this.Menu_View_Objects_Click);
             // 
             // Menu_View_Monitor
             // 
-            resources.ApplyResources(this.Menu_View_Monitor, "Menu_View_Monitor");
             this.Menu_View_Monitor.Name = "Menu_View_Monitor";
+            resources.ApplyResources(this.Menu_View_Monitor, "Menu_View_Monitor");
             this.Menu_View_Monitor.Click += new System.EventHandler(this.Menu_View_Monitor_Click);
             // 
             // helpToolStripMenuItem
             // 
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Help_Support,
             this.Menu_Help_Manual,
@@ -352,40 +351,41 @@
             this.toolStripMenuItem6,
             this.Menu_Help_About});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // Menu_Help_Support
             // 
-            resources.ApplyResources(this.Menu_Help_Support, "Menu_Help_Support");
             this.Menu_Help_Support.Name = "Menu_Help_Support";
+            resources.ApplyResources(this.Menu_Help_Support, "Menu_Help_Support");
             this.Menu_Help_Support.Click += new System.EventHandler(this.Menu_Help_Support_Click);
             // 
             // Menu_Help_Manual
             // 
-            resources.ApplyResources(this.Menu_Help_Manual, "Menu_Help_Manual");
             this.Menu_Help_Manual.Name = "Menu_Help_Manual";
+            resources.ApplyResources(this.Menu_Help_Manual, "Menu_Help_Manual");
             this.Menu_Help_Manual.Click += new System.EventHandler(this.Menu_Help_Manual_Click);
             // 
             // Menu_Help_Radar
             // 
-            resources.ApplyResources(this.Menu_Help_Radar, "Menu_Help_Radar");
             this.Menu_Help_Radar.Name = "Menu_Help_Radar";
+            resources.ApplyResources(this.Menu_Help_Radar, "Menu_Help_Radar");
             this.Menu_Help_Radar.Click += new System.EventHandler(this.Menu_Help_Radar_Click);
             // 
             // Menu_Help_License
             // 
-            resources.ApplyResources(this.Menu_Help_License, "Menu_Help_License");
             this.Menu_Help_License.Name = "Menu_Help_License";
+            resources.ApplyResources(this.Menu_Help_License, "Menu_Help_License");
             this.Menu_Help_License.Click += new System.EventHandler(this.Menu_Help_Licence_Click);
             // 
             // toolStripMenuItem6
             // 
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
             // 
             // Menu_Help_About
             // 
-            resources.ApplyResources(this.Menu_Help_About, "Menu_Help_About");
             this.Menu_Help_About.Name = "Menu_Help_About";
+            resources.ApplyResources(this.Menu_Help_About, "Menu_Help_About");
             this.Menu_Help_About.Click += new System.EventHandler(this.Menu_Help_About_Click);
             // 
             // MainForm
