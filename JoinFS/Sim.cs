@@ -2254,7 +2254,7 @@ namespace JoinFS
             public string destination = "";
             public string rules = "";
             public string route = "";
-            public string remarks = "";
+            public string remarks = "{\"IFF_CODE\":\"0000\",\"DL_CODE\":\"00\",\"AA_TCN\":\"00X\"}";
             public string alternate = "";
             public string speed = "";
             public string altitude = "";

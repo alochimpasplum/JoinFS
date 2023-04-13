@@ -462,9 +462,6 @@
   <data name="Text_Remarks.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="Text_Remarks.Text" xml:space="preserve">
-    <value>{"IFF_CODE": 0000, "DL_CODE": 00, "AA_TCN": "00X"}</value>
-  </data>
   <data name="&gt;&gt;Text_Remarks.Name" xml:space="preserve">
     <value>Text_Remarks</value>
   </data>

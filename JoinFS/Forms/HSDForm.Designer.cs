@@ -30,9 +30,10 @@
         {
             this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.labelIFF = new System.Windows.Forms.Label();
-            this.labelDL = new System.Windows.Forms.Label();
+            this.labelTCN = new System.Windows.Forms.Label();
             this.labelDist = new System.Windows.Forms.Label();
             this.labelRange = new System.Windows.Forms.Label();
+            this.labelDL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,17 +58,17 @@
             this.labelIFF.TabIndex = 1;
             this.labelIFF.Text = "IFF: 0000";
             // 
-            // labelDL
+            // labelTCN
             // 
-            this.labelDL.AutoSize = true;
-            this.labelDL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelDL.Location = new System.Drawing.Point(218, 13);
-            this.labelDL.Name = "labelDL";
-            this.labelDL.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.labelDL.Size = new System.Drawing.Size(54, 13);
-            this.labelDL.TabIndex = 2;
-            this.labelDL.Text = "TCN: 00X";
-            this.labelDL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTCN.AutoSize = true;
+            this.labelTCN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTCN.Location = new System.Drawing.Point(218, 13);
+            this.labelTCN.Name = "labelTCN";
+            this.labelTCN.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelTCN.Size = new System.Drawing.Size(54, 13);
+            this.labelTCN.TabIndex = 2;
+            this.labelTCN.Text = "TCN: 00X";
+            this.labelTCN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelDist
             // 
@@ -85,12 +86,22 @@
             // 
             this.labelRange.AutoSize = true;
             this.labelRange.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelRange.Location = new System.Drawing.Point(12, 26);
+            this.labelRange.Location = new System.Drawing.Point(13, 239);
             this.labelRange.Name = "labelRange";
             this.labelRange.Size = new System.Drawing.Size(60, 13);
             this.labelRange.TabIndex = 4;
             this.labelRange.Text = "rang: 30nm";
             this.labelRange.Click += new System.EventHandler(this.labelRange_Click);
+            // 
+            // labelDL
+            // 
+            this.labelDL.AutoSize = true;
+            this.labelDL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelDL.Location = new System.Drawing.Point(13, 26);
+            this.labelDL.Name = "labelDL";
+            this.labelDL.Size = new System.Drawing.Size(39, 13);
+            this.labelDL.TabIndex = 5;
+            this.labelDL.Text = "DL: 00";
             // 
             // HSDForm
             // 
@@ -98,9 +109,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.labelDL);
             this.Controls.Add(this.labelRange);
             this.Controls.Add(this.labelDist);
-            this.Controls.Add(this.labelDL);
+            this.Controls.Add(this.labelTCN);
             this.Controls.Add(this.labelIFF);
             this.Controls.Add(this.pictureBoxBackground);
             this.MaximizeBox = false;
@@ -119,8 +131,9 @@
 
         private System.Windows.Forms.PictureBox pictureBoxBackground;
         private System.Windows.Forms.Label labelIFF;
-        private System.Windows.Forms.Label labelDL;
+        private System.Windows.Forms.Label labelTCN;
         private System.Windows.Forms.Label labelDist;
         private System.Windows.Forms.Label labelRange;
+        private System.Windows.Forms.Label labelDL;
     }
 }

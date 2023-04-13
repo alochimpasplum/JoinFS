@@ -50,8 +50,7 @@ namespace JoinFS
                 Combo_Rules.Items.Add("IFR");
                 Combo_Rules.SelectedIndex = plan.rules == "IFR" ? 1 : 0;
                 Text_Route.Text = plan.route;
-                //Text_Remarks.Text = plan.remarks;
-                Text_Remarks.Text = "{'IFF_CODE': '0000', 'DL_CODE': '00', 'AA_TCN': '00X'}";
+                Text_Remarks.Text = plan.remarks;
             }
         }
 

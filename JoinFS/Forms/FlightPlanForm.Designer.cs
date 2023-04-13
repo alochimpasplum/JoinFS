@@ -114,6 +114,7 @@
             // 
             resources.ApplyResources(this.Text_Remarks, "Text_Remarks");
             this.Text_Remarks.Name = "Text_Remarks";
+            this.Text_Remarks.ReadOnly = true;
             // 
             // label7
             // 
