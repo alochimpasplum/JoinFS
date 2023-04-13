@@ -1905,5 +1905,13 @@ namespace JoinFS
             }
 #endif
         }
+
+        private void hSDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (main.hsdForm != null)
+            {
+                main.hsdForm.Show();
+            }
+        }
     }
 }

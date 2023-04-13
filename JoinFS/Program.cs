@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Reflection;
 using JoinFS.Properties;
+using JoinFS.Forms;
 
 namespace JoinFS
 {
@@ -1366,6 +1367,7 @@ namespace JoinFS
         public MonitorForm monitorForm = null;
         public ShortcutsForm shortcutsForm = null;
         public OptionsForm optionsForm = null;
+        public HSDForm hsdForm = null;
 
         /// <summary>
         /// Open all forms
@@ -1418,6 +1420,7 @@ namespace JoinFS
             monitorForm = new MonitorForm(this);
             shortcutsForm = new ShortcutsForm(this);
             optionsForm = new OptionsForm(this);
+            hsdForm = new HSDForm(this);
 #if !NO_HUBS
             hubsForm = new HubsForm(this);
 #endif
@@ -1518,6 +1521,7 @@ namespace JoinFS
             {
                 optionsForm.Hide();
             }
+            // TODO: abrir de forma automática el HSD según las preferencias
         }
 
 #endif

@@ -100,9 +100,9 @@
             // 
             // Combo_Rules
             // 
-            resources.ApplyResources(this.Combo_Rules, "Combo_Rules");
             this.Combo_Rules.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Rules.FormattingEnabled = true;
+            resources.ApplyResources(this.Combo_Rules, "Combo_Rules");
             this.Combo_Rules.Name = "Combo_Rules";
             // 
             // label6
@@ -122,15 +122,15 @@
             // 
             // Button_Cancel
             // 
-            resources.ApplyResources(this.Button_Cancel, "Button_Cancel");
             this.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.Button_Cancel, "Button_Cancel");
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.UseVisualStyleBackColor = true;
             // 
             // Button_OK
             // 
-            resources.ApplyResources(this.Button_OK, "Button_OK");
             this.Button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.Button_OK, "Button_OK");
             this.Button_OK.Name = "Button_OK";
             this.Button_OK.UseVisualStyleBackColor = true;
             this.Button_OK.Click += new System.EventHandler(this.Button_OK_Click);

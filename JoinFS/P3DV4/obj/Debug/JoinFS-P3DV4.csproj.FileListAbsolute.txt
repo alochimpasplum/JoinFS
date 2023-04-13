@@ -287,3 +287,4 @@ E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\ru\JoinFS(SO)-P3DV4.resources.dll
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\fr\JoinFS(SO)-P3DV4.resources.dll
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\JoinFS(SO)-P3DV4.exe
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\JoinFS(SO)-P3DV4.pdb
+E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\JoinFS.Forms.HSDForm.resources

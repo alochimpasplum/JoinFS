@@ -71,6 +71,7 @@
             this.Menu_Help_License = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu_Help_About = new System.Windows.Forms.ToolStripMenuItem();
+            this.hSDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip_Main.SuspendLayout();
             this.Main_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -301,7 +302,8 @@
             this.Menu_View_Session,
             this.Menu_View_Aircraft,
             this.Menu_View_Objects,
-            this.Menu_View_Monitor});
+            this.Menu_View_Monitor,
+            this.hSDToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             resources.ApplyResources(this.viewToolStripMenuItem, "viewToolStripMenuItem");
             // 
@@ -388,6 +390,12 @@
             resources.ApplyResources(this.Menu_Help_About, "Menu_Help_About");
             this.Menu_Help_About.Click += new System.EventHandler(this.Menu_Help_About_Click);
             // 
+            // hSDToolStripMenuItem
+            // 
+            this.hSDToolStripMenuItem.Name = "hSDToolStripMenuItem";
+            resources.ApplyResources(this.hSDToolStripMenuItem, "hSDToolStripMenuItem");
+            this.hSDToolStripMenuItem.Click += new System.EventHandler(this.hSDToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.Button_Join;
@@ -465,6 +473,7 @@
         private System.Windows.Forms.ToolStripMenuItem Menu_Help_License;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem Menu_Help_About;
+        private System.Windows.Forms.ToolStripMenuItem hSDToolStripMenuItem;
     }
 }
 

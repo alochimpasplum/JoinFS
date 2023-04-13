@@ -457,40 +457,46 @@
     <value>&amp;File</value>
   </data>
   <data name="Menu_View_Hubs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Hubs.Text" xml:space="preserve">
     <value>Public &amp;Hubs</value>
   </data>
   <data name="Menu_View_Atc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Atc.Text" xml:space="preserve">
     <value>Public A&amp;TC</value>
   </data>
   <data name="Menu_View_Session.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Session.Text" xml:space="preserve">
     <value>&amp;Session</value>
   </data>
   <data name="Menu_View_Aircraft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Aircraft.Text" xml:space="preserve">
     <value>&amp;Aircraft</value>
   </data>
   <data name="Menu_View_Objects.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Objects.Text" xml:space="preserve">
     <value>&amp;Objects</value>
   </data>
   <data name="Menu_View_Monitor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_View_Monitor.Text" xml:space="preserve">
     <value>&amp;Monitor</value>
+  </data>
+  <data name="hSDToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="hSDToolStripMenuItem.Text" xml:space="preserve">
+    <value>HSD</value>
   </data>
   <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -499,34 +505,34 @@
     <value>&amp;View</value>
   </data>
   <data name="Menu_Help_Support.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_Help_Support.Text" xml:space="preserve">
     <value>&amp;Support...</value>
   </data>
   <data name="Menu_Help_Manual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_Help_Manual.Text" xml:space="preserve">
     <value>&amp;Manual...</value>
   </data>
   <data name="Menu_Help_Radar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_Help_Radar.Text" xml:space="preserve">
     <value>ATC &amp;Radar...</value>
   </data>
   <data name="Menu_Help_License.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_Help_License.Text" xml:space="preserve">
     <value>&amp;License</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="Menu_Help_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Menu_Help_About.Text" xml:space="preserve">
     <value>&amp;About JoinFS</value>
@@ -575,9 +581,6 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -781,6 +784,12 @@
     <value>Menu_Help_About</value>
   </data>
   <data name="&gt;&gt;Menu_Help_About.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hSDToolStripMenuItem.Name" xml:space="preserve">
+    <value>hSDToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;hSDToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
