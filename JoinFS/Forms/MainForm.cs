@@ -566,6 +566,11 @@ namespace JoinFS
                 main.monitorForm.DoRefreshButton(refreshForce);
             }
 
+            if (main.hsdForm != null)
+            {
+                main.hsdForm.DoRefreshButton(refreshForce);
+            }
+
             // reset force flag
             refreshForce = false;
             // refresh is no longer active

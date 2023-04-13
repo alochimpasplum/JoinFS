@@ -90,6 +90,7 @@
             this.labelRange.Size = new System.Drawing.Size(60, 13);
             this.labelRange.TabIndex = 4;
             this.labelRange.Text = "rang: 30nm";
+            this.labelRange.Click += new System.EventHandler(this.labelRange_Click);
             // 
             // HSDForm
             // 
