@@ -14,6 +14,8 @@ namespace JoinFS.Forms
 {
     public partial class HSD_CONFIG_Form : Form
     {
+        public Sim.FlightPlan plan;
+
         Main main;
         public HSD_CONFIG_Form(Main main)
         {
@@ -29,22 +31,26 @@ namespace JoinFS.Forms
         }
         private void LoadValues()
         {
-            textBoxIFF.Text = main.hsdForm.selfData.IFF_CODE;
-            textBoxDL.Text = main.hsdForm.selfData.DL_CODE;
-            textBoxTCN.Text = main.hsdForm.selfData.AA_TCN.Substring(0, 2);
-            radioButtonX.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "X";
-            radioButtonY.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "Y";
+            lock (main.conch)
+            {
+                textBoxIFF.Text = main.hsdForm.selfData.IFF_CODE;
+                textBoxDL.Text = main.hsdForm.selfData.DL_CODE;
+                textBoxTCN.Text = main.hsdForm.selfData.AA_TCN.Substring(0, 2);
+                radioButtonX.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "X";
+                radioButtonY.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "Y";
+            }
         }
         private void ApplyChanges()
         {
             lock (main.conch)
             {
-                main.sim.userFlightPlan.remarks = JsonSerializer.Serialize<InfoData>(main.hsdForm.selfData);
+                Sim.Aircraft selfEntity = main.sim.objectList.Find(x => x.owner == Sim.Obj.Owner.Me) as Sim.Aircraft;
+                selfEntity.flightPlan.remarks = JsonSerializer.Serialize<InfoData>(main.hsdForm.selfData);
             }
         }
         private void SetTCN()
         {
-            string temp = textBoxDL.Text;
+            string temp = textBoxTCN.Text;
 
             if (radioButtonX.Checked)
                 temp += "X";
@@ -69,21 +75,25 @@ namespace JoinFS.Forms
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if (Int32.TryParse(textBoxIFF.Text, out int value))
+                CheckIFF();
+            }
+        }
+        private void CheckIFF()
+        {
+            if (Int32.TryParse(textBoxIFF.Text, out int value))
+            {
+                while (textBoxIFF.Text.Length < 4)
                 {
-                    while (textBoxIFF.Text.Length < 4)
-                    {
-                        textBoxIFF.Text = "0" + textBoxIFF.Text;
-                    }
+                    textBoxIFF.Text = "0" + textBoxIFF.Text;
+                }
 
-                    main.hsdForm.selfData.IFF_CODE = textBoxIFF.Text;
-                    ApplyChanges();
-                }
-                else
-                {
-                    // TODO: mostrar el mensaje "introduce un valor válido"
-                    LoadValues();
-                }
+                main.hsdForm.selfData.IFF_CODE = textBoxIFF.Text;
+                ApplyChanges();
+            }
+            else
+            {
+                // TODO: mostrar el mensaje "introduce un valor válido"
+                LoadValues();
             }
         }
 
@@ -91,21 +101,25 @@ namespace JoinFS.Forms
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if(Int32.TryParse(textBoxDL.Text, out int value))
+                CheckDL();
+            }
+        }
+        private void CheckDL()
+        {
+            if (Int32.TryParse(textBoxDL.Text, out int value))
+            {
+                while (textBoxDL.Text.Length < 2)
                 {
-                    while(textBoxDL.Text.Length < 2)
-                    {
-                        textBoxDL.Text = "0" + textBoxDL.Text;
-                    }
+                    textBoxDL.Text = "0" + textBoxDL.Text;
+                }
 
-                    main.hsdForm.selfData.DL_CODE = textBoxDL.Text;
-                    ApplyChanges();
-                }
-                else
-                {
-                    // TODO: mostrar el mensaje "introduce un valor válido"
-                    LoadValues();
-                }
+                main.hsdForm.selfData.DL_CODE = textBoxDL.Text;
+                ApplyChanges();
+            }
+            else
+            {
+                // TODO: mostrar el mensaje "introduce un valor válido"
+                LoadValues();
             }
         }
 
@@ -113,21 +127,59 @@ namespace JoinFS.Forms
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if (Int32.TryParse(textBoxTCN.Text, out int value))
-                {
-                    while (textBoxTCN.Text.Length < 2)
-                    {
-                        textBoxTCN.Text = "0" + textBoxTCN.Text;
-                    }
-
-                    SetTCN();
-                }
-                else
-                {
-                    // TODO: mostrar el mensaje "introduce un valor válido"
-                    LoadValues();
-                }
+                CheckTCN();
             }
+        }
+        private void CheckTCN()
+        {
+            if (Int32.TryParse(textBoxTCN.Text, out int value))
+            {
+                while (textBoxTCN.Text.Length < 2)
+                {
+                    textBoxTCN.Text = "0" + textBoxTCN.Text;
+                }
+
+                SetTCN();
+            }
+            else
+            {
+                // TODO: mostrar el mensaje "introduce un valor válido"
+                LoadValues();
+            }
+        }
+
+        private void HSD_CONFIG_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+        }
+
+        private void textBoxIFF_Leave(object sender, EventArgs e)
+        {
+            CheckIFF();
+        }
+
+        private void textBoxDL_Leave(object sender, EventArgs e)
+        {
+            CheckDL();
+        }
+
+        private void textBoxTCN_Leave(object sender, EventArgs e)
+        {
+            CheckTCN();
+        }
+
+        private void radioButtonX_Leave(object sender, EventArgs e)
+        {
+            CheckTCN();
+        }
+
+        private void radioButtonY_Leave(object sender, EventArgs e)
+        {
+            CheckTCN();
         }
     }
 }

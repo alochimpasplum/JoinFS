@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxTCN = new System.Windows.Forms.TextBox();
             this.textBoxDL = new System.Windows.Forms.TextBox();
             this.textBoxIFF = new System.Windows.Forms.TextBox();
             this.radioButtonY = new System.Windows.Forms.RadioButton();
@@ -37,7 +38,6 @@
             this.labelDL = new System.Windows.Forms.Label();
             this.labelIFF = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBoxTCN = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SELF";
             // 
+            // textBoxTCN
+            // 
+            this.textBoxTCN.Location = new System.Drawing.Point(34, 74);
+            this.textBoxTCN.MaxLength = 2;
+            this.textBoxTCN.Name = "textBoxTCN";
+            this.textBoxTCN.Size = new System.Drawing.Size(51, 20);
+            this.textBoxTCN.TabIndex = 10;
+            this.textBoxTCN.Text = "99";
+            this.textBoxTCN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxTCN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTCN_KeyPress);
+            this.textBoxTCN.Leave += new System.EventHandler(this.textBoxTCN_Leave);
+            // 
             // textBoxDL
             // 
             this.textBoxDL.Location = new System.Drawing.Point(34, 48);
@@ -68,6 +80,7 @@
             this.textBoxDL.Text = "99";
             this.textBoxDL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxDL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDL_KeyPress);
+            this.textBoxDL.Leave += new System.EventHandler(this.textBoxDL_Leave);
             // 
             // textBoxIFF
             // 
@@ -79,6 +92,7 @@
             this.textBoxIFF.Text = "9999";
             this.textBoxIFF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxIFF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIFF_KeyPress);
+            this.textBoxIFF.Leave += new System.EventHandler(this.textBoxIFF_Leave);
             // 
             // radioButtonY
             // 
@@ -92,6 +106,7 @@
             this.radioButtonY.Text = "Y";
             this.radioButtonY.UseVisualStyleBackColor = true;
             this.radioButtonY.Click += new System.EventHandler(this.radioButtonY_Click);
+            this.radioButtonY.Leave += new System.EventHandler(this.radioButtonY_Leave);
             // 
             // radioButtonX
             // 
@@ -103,6 +118,7 @@
             this.radioButtonX.Text = "X";
             this.radioButtonX.UseVisualStyleBackColor = true;
             this.radioButtonX.Click += new System.EventHandler(this.radioButtonX_Click);
+            this.radioButtonX.Leave += new System.EventHandler(this.radioButtonX_Leave);
             // 
             // labelTCN
             // 
@@ -140,17 +156,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // textBoxTCN
-            // 
-            this.textBoxTCN.Location = new System.Drawing.Point(34, 74);
-            this.textBoxTCN.MaxLength = 2;
-            this.textBoxTCN.Name = "textBoxTCN";
-            this.textBoxTCN.Size = new System.Drawing.Size(51, 20);
-            this.textBoxTCN.TabIndex = 10;
-            this.textBoxTCN.Text = "99";
-            this.textBoxTCN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxTCN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTCN_KeyPress);
-            // 
             // HSD_CONFIG_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +166,7 @@
             this.MaximizeBox = false;
             this.Name = "HSD_CONFIG_Form";
             this.Text = "HSD_CONFIG_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HSD_CONFIG_Form_FormClosing);
             this.Load += new System.EventHandler(this.HSD_CONFIG_Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -16,7 +16,7 @@ namespace JoinFS.Forms
     public partial class HSDForm : Form
     {
         Main main;
-        Sim.Aircraft selfEntity;
+        private Sim.Aircraft selfEntity { get; set; }
         public InfoData selfData { get; set; }
         const double MAX_TACAN_DISTANCE = 300;
 
