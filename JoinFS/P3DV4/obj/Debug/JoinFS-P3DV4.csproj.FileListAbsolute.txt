@@ -306,3 +306,4 @@ E:\Repos\JoinFS\JoinFS\P3DV4\bin\Debug\System.Text.Encodings.Web.xml
 E:\Repos\JoinFS\JoinFS\P3DV4\bin\Debug\System.Text.Json.xml
 E:\Repos\JoinFS\JoinFS\P3DV4\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Repos\JoinFS\JoinFS\P3DV4\bin\Debug\System.ValueTuple.xml
+E:\Repos\JoinFS\JoinFS\P3DV4\obj\Debug\JoinFS.Forms.HSD_CONFIG_Form.resources

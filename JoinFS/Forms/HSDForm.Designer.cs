@@ -57,6 +57,7 @@
             this.labelIFF.Size = new System.Drawing.Size(52, 13);
             this.labelIFF.TabIndex = 1;
             this.labelIFF.Text = "IFF: 0000";
+            this.labelIFF.Click += new System.EventHandler(this.labelIFF_Click);
             // 
             // labelTCN
             // 
@@ -69,6 +70,7 @@
             this.labelTCN.TabIndex = 2;
             this.labelTCN.Text = "TCN: 00X";
             this.labelTCN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTCN.Click += new System.EventHandler(this.labelTCN_Click);
             // 
             // labelDist
             // 
@@ -102,6 +104,7 @@
             this.labelDL.Size = new System.Drawing.Size(39, 13);
             this.labelDL.TabIndex = 5;
             this.labelDL.Text = "DL: 00";
+            this.labelDL.Click += new System.EventHandler(this.labelDL_Click);
             // 
             // HSDForm
             // 

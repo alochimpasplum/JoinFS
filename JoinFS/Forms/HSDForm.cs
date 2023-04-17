@@ -17,7 +17,7 @@ namespace JoinFS.Forms
     {
         Main main;
         Sim.Aircraft selfEntity;
-        InfoData selfData;
+        public InfoData selfData { get; set; }
         const double MAX_TACAN_DISTANCE = 300;
 
         enum ERange { D8 = 8, D30 = 30, D60 = 60, D120 = 120, D240 = 240 }
@@ -148,6 +148,7 @@ namespace JoinFS.Forms
             }
 
             labelDist.Text = (tacanDist != MAX_TACAN_DISTANCE) ? string.Format("dst: {0}nm",tacanDist.ToString("N2")) : "dst: ---nm";
+            labelDist.ForeColor = (tacanDist != MAX_TACAN_DISTANCE) ? Color.LawnGreen : labelDist.ForeColor = SystemColors.ButtonHighlight;
         }
         private bool CheckPairedTacan(InfoData data)
         {
@@ -205,6 +206,13 @@ namespace JoinFS.Forms
         {
             RefreshWindow();
         }
+        private void LoadConfig()
+        {
+            if (main.hsdConfigForm != null)
+            {
+                main.hsdConfigForm.Show();
+            }
+        }
 
         private void labelRange_Click(object sender, EventArgs e)
         {
@@ -227,6 +235,20 @@ namespace JoinFS.Forms
                     break;
             }
             RefreshWindow();
+        }
+        private void labelIFF_Click(object sender, EventArgs e)
+        {
+            LoadConfig();
+        }
+
+        private void labelTCN_Click(object sender, EventArgs e)
+        {
+            LoadConfig();
+        }
+
+        private void labelDL_Click(object sender, EventArgs e)
+        {
+            LoadConfig();
         }
     }
 }

@@ -1368,6 +1368,7 @@ namespace JoinFS
         public ShortcutsForm shortcutsForm = null;
         public OptionsForm optionsForm = null;
         public HSDForm hsdForm = null;
+        public HSD_CONFIG_Form hsdConfigForm = null;
 
         /// <summary>
         /// Open all forms
@@ -1421,6 +1422,7 @@ namespace JoinFS
             shortcutsForm = new ShortcutsForm(this);
             optionsForm = new OptionsForm(this);
             hsdForm = new HSDForm(this);
+            hsdConfigForm = new HSD_CONFIG_Form(this);
 #if !NO_HUBS
             hubsForm = new HubsForm(this);
 #endif

@@ -163,6 +163,18 @@
     <Compile Include="Forms\HeightForm.Designer.cs">
       <DependentUpon>HeightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HSDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HSDForm.Designer.cs">
+      <DependentUpon>HSDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HSD_CONFIG_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HSD_CONFIG_Form.Designer.cs">
+      <DependentUpon>HSD_CONFIG_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -541,6 +553,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HeightForm.ru.resx">
       <DependentUpon>HeightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HSDForm.resx">
+      <DependentUpon>HSDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HSD_CONFIG_Form.resx">
+      <DependentUpon>HSD_CONFIG_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HubsForm.es.resx">
       <DependentUpon>HubsForm.cs</DependentUpon>
