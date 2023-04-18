@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
+using System.Numerics;
+using System.Security.Policy;
 
 namespace JoinFS.Forms
 {
@@ -17,8 +19,12 @@ namespace JoinFS.Forms
     {
         Main main;
         private Sim.Aircraft selfEntity { get; set; }
+        TestDL testDL = new TestDL();
         public InfoData selfData { get; set; }
-        const double MAX_TACAN_DISTANCE = 300;
+        const double MAX_TACAN_DISTANCE = 240;
+        const int DL_ITEM_RADIUS = 5;
+        const int DL_ITEM_HEADING_SIZE = 7;
+        bool isOnTest = true;
 
         enum ERange { D8 = 8, D30 = 30, D60 = 60, D120 = 120, D240 = 240 }
         ERange rng;
@@ -64,7 +70,7 @@ namespace JoinFS.Forms
 
             Graphics gr = Graphics.FromImage(pictureBoxBackground.Image);
 
-            using (Pen pen = new Pen(Color.White, 1))
+            using (Pen pen = new Pen(Color.Gray, 1))
             {
                 gr.DrawEllipse(pen, new Rectangle(10, 10, 280, 280));
                 gr.DrawEllipse(pen, new Rectangle(56, 56, (280/3)*2, (280 / 3) * 2));
@@ -73,6 +79,11 @@ namespace JoinFS.Forms
                 gr.DrawLine(pen, new Point(150, 95), new Point(150, 110));
                 gr.DrawLine(pen, new Point(150, 95), new Point(155, 97));
                 gr.DrawLine(pen, new Point(150, 100), new Point(155, 97));
+
+                gr.DrawLine(pen, new Point(150 + (280 / 6), 150), new Point(150 + (280 / 6) + 8, 150));
+                gr.DrawLine(pen, new Point(150 - (280 / 6), 150), new Point(150 - (280 / 6) - 8, 150));
+                gr.DrawLine(pen, new Point(150, 150 + (280 / 6)), new Point(150, 150 + (280 / 6) + 8));
+                gr.DrawLine(pen, new Point(150, 150 - (280 / 6)), new Point(150, 150 - (280 / 6) - 8));
             }
         }
         private void SetSelfOnHSD()
@@ -106,6 +117,9 @@ namespace JoinFS.Forms
 
                     SetBackgroundImage();
 
+                    if (isOnTest)
+                        TestPos();
+
                     CheckAircrafts(Aircrafts);
 
                     if(selfEntity != null)
@@ -117,6 +131,31 @@ namespace JoinFS.Forms
                     SetSelfOnHSD();
                 }
             }
+        }
+        private void TestPos()
+        {
+            Graphics gr = Graphics.FromImage(pictureBoxBackground.Image);
+            int[] temp = testDL.GetItem();
+
+            using (Pen pen = new Pen(Color.Yellow, 1))
+            {
+                gr.DrawEllipse(pen, new Rectangle(150 + temp[0] - (DL_ITEM_RADIUS / 2), 150 + temp[1] - (DL_ITEM_RADIUS / 2), DL_ITEM_RADIUS, DL_ITEM_RADIUS));
+            }
+            using (Pen pen = new Pen(Color.Yellow, 2))
+            {
+                gr.DrawLine(pen, new Point(150 + temp[0], 150 + temp[1]), GetFinalItemHeadingPoint(150 + temp[0], 150 + temp[1], temp[2]));
+            }
+        }
+        /// <summary>
+        /// Used to obtain the final point of the item line
+        /// </summary>
+        private Point GetFinalItemHeadingPoint(int x, int y, int bearing)
+        {
+            int tempX = x + (int)(Math.Sin((bearing * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+            int tempY = y - (int)(Math.Cos((bearing * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+            Console.WriteLine("X: " + (Math.Sin((bearing * Math.PI) / 180) + " Y: " + Math.Cos((bearing * Math.PI) / 180)));
+
+            return new Point(tempX, tempY);
         }
         private void CheckAircrafts(List<Sim.Aircraft> aircrafts)
         {
@@ -201,7 +240,6 @@ namespace JoinFS.Forms
                 Hide();
             }
         }
-
         public void DoRefreshButton(bool force)
         {
             RefreshWindow();
@@ -213,7 +251,6 @@ namespace JoinFS.Forms
                 main.hsdConfigForm.Show();
             }
         }
-
         private void labelRange_Click(object sender, EventArgs e)
         {
             switch (rng)
@@ -234,21 +271,142 @@ namespace JoinFS.Forms
                     rng = ERange.D8;
                     break;
             }
-            RefreshWindow();
+            labelRange.Text = string.Format("rng: {0}nm", (int)rng);
+
+            if(selfEntity != null)
+                RefreshWindow();
         }
         private void labelIFF_Click(object sender, EventArgs e)
         {
             LoadConfig();
         }
-
         private void labelTCN_Click(object sender, EventArgs e)
         {
             LoadConfig();
         }
-
         private void labelDL_Click(object sender, EventArgs e)
         {
             LoadConfig();
+        }
+        private class TestDL
+        {
+            enum ESide { N, NE, E, SE, S, SW, W, NW }
+            enum EDist { FAR, CLOSE, MEDIUM }
+            Queue<TestItem> Tests;
+            public TestDL()
+            {
+                Tests = new Queue<TestItem>();
+                // Change this in order to show another distance on tests
+                FillQueue(EDist.MEDIUM);
+            }
+            public int[] GetItem()
+            {
+                TestItem tempItem = Tests.Dequeue();
+                int[] temp = tempItem.GetInfo();
+                Tests.Enqueue(tempItem);
+                return temp;
+            }
+            private void FillQueue(EDist distance)
+            {
+                foreach (ESide position in Enum.GetValues(typeof(ESide)))
+                {
+                    foreach (ESide bearing in Enum.GetValues(typeof(ESide)))
+                    {
+                        Tests.Enqueue(new TestItem(position, bearing, distance));
+                    }
+                }
+            }
+
+            private class TestItem
+            {
+                private const int MAX_RANGE = 140;
+                public ESide Position { get; set; }
+                public ESide Bearing { get; set; }
+                public EDist Distance { get; set; }
+                public TestItem(ESide position, ESide bearing, EDist distance)
+                {
+                    Position = position;
+                    Bearing = bearing;
+                    Distance = distance;
+                }
+                public int[] GetInfo()
+                {
+                    int[] result = new int[3];
+                    int tempDist = (Distance == EDist.CLOSE) ? (MAX_RANGE / 3) : (Distance == EDist.MEDIUM) ? (MAX_RANGE / 3) * 2 : MAX_RANGE;
+
+                    switch (Position)
+                    {
+                        case ESide.N:
+                            result[0] = 0;
+                            result[1] = tempDist;
+                            result[1] *= -1;
+                            break;
+                        case ESide.E:
+                            result[0] = tempDist;
+                            result[1] = 0;
+                            break;
+                        case ESide.W:
+                            result[0] = tempDist;
+                            result[0] *= -1;
+                            result[1] = 0;
+                            break;
+                        case ESide.S:
+                            result[0] = 0;
+                            result[1] = tempDist;
+                            break;
+                        case ESide.NE:
+                            result[0] = 0;
+                            result[1] = tempDist;
+                            result[1] *= -1;
+                            break;
+                        case ESide.SE:
+                            result[0] = tempDist;
+                            result[1] = 0;
+                            break;
+                        case ESide.SW:
+                            result[0] = 0;
+                            result[1] = tempDist;
+                            break;
+                        case ESide.NW:
+                            result[0] = tempDist;
+                            result[0] *= -1;
+                            result[1] = 0;
+                            break;
+                    }
+
+                    switch (Bearing)
+                    {
+                        case ESide.N:
+                            result[2] = 0;
+                            break;
+                        case ESide.E:
+                            result[2] = 90;
+                            break;
+                        case ESide.S:
+                            result[2] = 180;
+                            break;
+                        case ESide.W:
+                            result[2] = 270;
+                            break;
+                        case ESide.NE:
+                            result[2] = 45;
+                            break;
+                        case ESide.SE:
+                            result[2] = 135;
+                            break;
+                        case ESide.SW:
+                            result[2] = 225;
+                            break;
+                        case ESide.NW:
+                            result[2] = 315;
+                            break;
+                    }
+
+                    Console.WriteLine("Position of: " + Position + " Bearing: " + result[2]);
+
+                    return result;
+                }
+            }
         }
     }
 }
