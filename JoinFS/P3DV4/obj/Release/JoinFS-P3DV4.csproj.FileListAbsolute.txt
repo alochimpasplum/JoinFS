@@ -305,3 +305,8 @@ E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\ru\JoinFS(SO)-P3DV4.resources.dll
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\fr\JoinFS(SO)-P3DV4.resources.dll
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\JoinFS-P3DV4.csproj.CopyComplete
 E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\JoinFS(SO)-P3DV4.exe
+E:\Repos\JoinFS\JoinFS\P3DV4\bin\Release\JoinFS(SO)-P3DV4.exe.manifest
+E:\Repos\JoinFS\JoinFS\P3DV4\bin\Release\JoinFS(SO)-P3DV4.application
+E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\JoinFS(SO)-P3DV4.TrustInfo.xml
+E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\JoinFS(SO)-P3DV4.exe.manifest
+E:\Repos\JoinFS\JoinFS\P3DV4\obj\Release\JoinFS(SO)-P3DV4.application

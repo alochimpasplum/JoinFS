@@ -13,24 +13,23 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>
-    </PublishUrl>
+    <PublishUrl>E:\OneDrive\JoinFS\4.0.0\P3Dv4\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <SupportUrl>http://joinfs.net</SupportUrl>
+    <SupportUrl>http://joinfs-so.edavirtual.org/</SupportUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>JoinFS-P3DV4</ProductName>
-    <PublisherName>Peter Memmott</PublisherName>
+    <PublisherName>Juan Antonio</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>0.3.2.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>4.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -50,13 +49,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7A136ABD081997B5940D90461946FC1009D2F188</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>09DE93447901179DF802942D04660BECA6394B1D</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>joinfs.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -69,7 +68,7 @@
     <ApplicationIcon>Resources\App.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>joinfs.pfx</AssemblyOriginatorKeyFile>
@@ -1169,6 +1168,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\strings.ru.resx" />
+    <None Include="joinfs-so.pfx" />
     <None Include="joinfs.pfx" />
     <None Include="Licence.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1228,9 +1228,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <!--
   <Target Name="AfterBuild">
     <Exec Command="&quot;C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe&quot; sign /f &quot;$(ProjectDir)joinfs.pfx&quot; /p WSAiwsdj9( &quot;$(TargetPath)&quot;" />
   </Target>
+  -->
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)FSX\SimConnect.dll" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>

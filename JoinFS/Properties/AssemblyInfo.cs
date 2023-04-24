@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("JoinFS-SO")]
 [assembly: AssemblyDescription("Multiplayer Across Flight Simulators")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ejército del Aire virtual")]
 [assembly: AssemblyProduct("JoinFS-SO")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

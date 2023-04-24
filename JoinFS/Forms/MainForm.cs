@@ -163,7 +163,7 @@ namespace JoinFS
                     {
                         //string sc = Program.Code("http://joinfs.net/version", true, 1234);
                         //versionWebClient.DownloadStringAsync(new Uri(Program.Code(@"K^x9E`;gZ2&:s={%T5zSw:cDz", false, 1234)));
-                        versionWebClient.DownloadStringAsync(new Uri("https://www.edavirtual.org/joinfsso/version.html"));
+                        versionWebClient.DownloadStringAsync(new Uri("http://joinfs-so.edavirtual.org/version.html"));
                     }
                 }
                 catch (Exception ex)
@@ -1733,7 +1733,9 @@ namespace JoinFS
                     else
                     {
                         //string sc = Program.Code("https://joinfs.net/install.html", true, 1234);
-                        Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                        //Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                        // TODO: Enconde this
+                        Main.Launch(@"https://1drv.ms/f/s!AvneQCwHfSBuooJJHNETRlC133oNGw");
                     }
                     // shutdown
                     main.shutdown = "";
@@ -1742,7 +1744,9 @@ namespace JoinFS
             else
             {
                 //string sc = Program.Code("https://joinfs.net/install.html", true, 1234);
-                Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                // Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                // TODO: Enconde this
+                Main.Launch(@"https://1drv.ms/f/s!AvneQCwHfSBuooJJHNETRlC133oNGw");
             }
         }
 
