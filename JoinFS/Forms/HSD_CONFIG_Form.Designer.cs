@@ -38,7 +38,16 @@
             this.labelDL = new System.Windows.Forms.Label();
             this.labelIFF = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxRight3 = new System.Windows.Forms.TextBox();
+            this.textBoxRight2 = new System.Windows.Forms.TextBox();
+            this.textBoxRight1 = new System.Windows.Forms.TextBox();
+            this.textBoxRight0 = new System.Windows.Forms.TextBox();
+            this.textBoxLeft3 = new System.Windows.Forms.TextBox();
+            this.textBoxLeft2 = new System.Windows.Forms.TextBox();
+            this.textBoxLeft1 = new System.Windows.Forms.TextBox();
+            this.textBoxLeft0 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -149,18 +158,122 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBoxRight3);
+            this.groupBox2.Controls.Add(this.textBoxRight2);
+            this.groupBox2.Controls.Add(this.textBoxRight1);
+            this.groupBox2.Controls.Add(this.textBoxRight0);
+            this.groupBox2.Controls.Add(this.textBoxLeft3);
+            this.groupBox2.Controls.Add(this.textBoxLeft2);
+            this.groupBox2.Controls.Add(this.textBoxLeft1);
+            this.groupBox2.Controls.Add(this.textBoxLeft0);
             this.groupBox2.Location = new System.Drawing.Point(188, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(195, 100);
+            this.groupBox2.Size = new System.Drawing.Size(83, 127);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "DL CODES";
+            // 
+            // textBoxRight3
+            // 
+            this.textBoxRight3.Location = new System.Drawing.Point(58, 97);
+            this.textBoxRight3.MaxLength = 2;
+            this.textBoxRight3.Name = "textBoxRight3";
+            this.textBoxRight3.Size = new System.Drawing.Size(19, 20);
+            this.textBoxRight3.TabIndex = 7;
+            this.textBoxRight3.Text = "00";
+            this.textBoxRight3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRight3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxRight3.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxRight2
+            // 
+            this.textBoxRight2.Location = new System.Drawing.Point(58, 71);
+            this.textBoxRight2.MaxLength = 2;
+            this.textBoxRight2.Name = "textBoxRight2";
+            this.textBoxRight2.Size = new System.Drawing.Size(19, 20);
+            this.textBoxRight2.TabIndex = 6;
+            this.textBoxRight2.Text = "00";
+            this.textBoxRight2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRight2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxRight2.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxRight1
+            // 
+            this.textBoxRight1.Location = new System.Drawing.Point(58, 44);
+            this.textBoxRight1.MaxLength = 2;
+            this.textBoxRight1.Name = "textBoxRight1";
+            this.textBoxRight1.Size = new System.Drawing.Size(19, 20);
+            this.textBoxRight1.TabIndex = 5;
+            this.textBoxRight1.Text = "00";
+            this.textBoxRight1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRight1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxRight1.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxRight0
+            // 
+            this.textBoxRight0.Location = new System.Drawing.Point(58, 19);
+            this.textBoxRight0.MaxLength = 2;
+            this.textBoxRight0.Name = "textBoxRight0";
+            this.textBoxRight0.Size = new System.Drawing.Size(19, 20);
+            this.textBoxRight0.TabIndex = 4;
+            this.textBoxRight0.Text = "00";
+            this.textBoxRight0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRight0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxRight0.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxLeft3
+            // 
+            this.textBoxLeft3.Location = new System.Drawing.Point(7, 96);
+            this.textBoxLeft3.MaxLength = 2;
+            this.textBoxLeft3.Name = "textBoxLeft3";
+            this.textBoxLeft3.Size = new System.Drawing.Size(19, 20);
+            this.textBoxLeft3.TabIndex = 3;
+            this.textBoxLeft3.Text = "00";
+            this.textBoxLeft3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxLeft3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxLeft3.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxLeft2
+            // 
+            this.textBoxLeft2.Location = new System.Drawing.Point(7, 70);
+            this.textBoxLeft2.MaxLength = 2;
+            this.textBoxLeft2.Name = "textBoxLeft2";
+            this.textBoxLeft2.Size = new System.Drawing.Size(19, 20);
+            this.textBoxLeft2.TabIndex = 2;
+            this.textBoxLeft2.Text = "00";
+            this.textBoxLeft2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxLeft2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxLeft2.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxLeft1
+            // 
+            this.textBoxLeft1.Location = new System.Drawing.Point(7, 44);
+            this.textBoxLeft1.MaxLength = 2;
+            this.textBoxLeft1.Name = "textBoxLeft1";
+            this.textBoxLeft1.Size = new System.Drawing.Size(19, 20);
+            this.textBoxLeft1.TabIndex = 1;
+            this.textBoxLeft1.Text = "00";
+            this.textBoxLeft1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxLeft1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxLeft1.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
+            // 
+            // textBoxLeft0
+            // 
+            this.textBoxLeft0.Location = new System.Drawing.Point(7, 18);
+            this.textBoxLeft0.MaxLength = 2;
+            this.textBoxLeft0.Name = "textBoxLeft0";
+            this.textBoxLeft0.Size = new System.Drawing.Size(19, 20);
+            this.textBoxLeft0.TabIndex = 0;
+            this.textBoxLeft0.Text = "00";
+            this.textBoxLeft0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxLeft0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDLCodes_KeyPress);
+            this.textBoxLeft0.Leave += new System.EventHandler(this.textBoxDLCodes_Leave);
             // 
             // HSD_CONFIG_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 122);
+            this.ClientSize = new System.Drawing.Size(281, 146);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -170,6 +283,8 @@
             this.Load += new System.EventHandler(this.HSD_CONFIG_Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,5 +301,13 @@
         private System.Windows.Forms.TextBox textBoxDL;
         private System.Windows.Forms.TextBox textBoxIFF;
         private System.Windows.Forms.TextBox textBoxTCN;
+        private System.Windows.Forms.TextBox textBoxRight3;
+        private System.Windows.Forms.TextBox textBoxRight2;
+        private System.Windows.Forms.TextBox textBoxRight1;
+        private System.Windows.Forms.TextBox textBoxRight0;
+        private System.Windows.Forms.TextBox textBoxLeft3;
+        private System.Windows.Forms.TextBox textBoxLeft2;
+        private System.Windows.Forms.TextBox textBoxLeft1;
+        private System.Windows.Forms.TextBox textBoxLeft0;
     }
 }

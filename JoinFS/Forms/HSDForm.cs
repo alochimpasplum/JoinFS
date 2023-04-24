@@ -22,11 +22,14 @@ namespace JoinFS.Forms
         TestDL testDL = new TestDL();
         public InfoData selfData { get; set; }
         const double MAX_TACAN_DISTANCE = 240;
-        const int DL_ITEM_RADIUS = 5;
-        const int DL_ITEM_HEADING_SIZE = 7;
-        bool isOnTest = true;
+        bool isOnTest = false;
+        private int rotation;
+        private List<DataLinkItem> Items = new List<DataLinkItem>();
+        public string[] LeftDL { get; set; }
+        public string[] RightDL { get; set; }
 
         enum ERange { D8 = 8, D30 = 30, D60 = 60, D120 = 120, D240 = 240 }
+        public enum EDLType { LEFT, RIGHT, TEST }
         ERange rng;
 
         /// <summary>
@@ -48,7 +51,100 @@ namespace JoinFS.Forms
                 return string.Format("IFF: {0}, DL_CODE: {1}, AA_TCN: {2}", IFF_CODE, DL_CODE, AA_TCN);
             }
         }
+        /// <summary>
+        /// This class is used to put information in the DL
+        /// </summary>
+        public class DataLinkItem
+        {
+            const int DL_ITEM_RADIUS = 4;
+            const int DL_ITEM_HEADING_SIZE = 7;
 
+            public int X { get; set; }
+            public int Y { get; set; }
+            public int Heading { get; set; }
+            public string FlightLevel { get; set; }
+            public string DataLinkCode { get; set; }
+            private PictureBox pictureBoxHSD;
+            private Color color;
+            private Brush brush;
+            private int VectorPhase { get; set; }
+            private int VectorModule { get; set; }
+            public DataLinkItem(int vectorModule, int vectorPhase, int heading, string flightLevel, string dataLinkCode, PictureBox pictureBox, EDLType type)
+            {
+                VectorPhase = vectorPhase;
+                VectorModule = vectorModule;
+                Heading = heading;
+                FlightLevel = flightLevel;
+                DataLinkCode = dataLinkCode;
+                pictureBoxHSD = pictureBox;
+                
+                SetColors(type);
+                SetCartesianPoints();
+                DrawSelf();
+            }
+            public void DrawSelf()
+            {
+                using (Graphics gr = Graphics.FromImage(pictureBoxHSD.Image))
+                {
+                    using (Pen pen = new Pen(color, 1))
+                    {
+                        gr.DrawEllipse(pen, new Rectangle(150 + X - (DL_ITEM_RADIUS / 2), 150 + Y - (DL_ITEM_RADIUS / 2), DL_ITEM_RADIUS, DL_ITEM_RADIUS));
+                    }
+                    using (Pen pen = new Pen(color, 2))
+                    {
+                        gr.DrawLine(pen, new Point(150 + X, 150 + Y), GetFinalItemHeadingPoint(150 + X, 150 + Y));
+                    }
+                }
+            }
+            public void DrawText(int rotation)
+            {
+                VectorPhase += rotation;
+                SetCartesianPoints();
+
+                using (Graphics gr = Graphics.FromImage(pictureBoxHSD.Image))
+                using (Font font = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Pixel))
+                {
+                    gr.DrawString(FlightLevel, font, brush, 150 + X - 8, 150 + Y + 5);
+                    gr.DrawString(DataLinkCode, font, brush, 150 + X + 8, 150 + Y - 5);
+                }
+            }
+            private void SetColors(EDLType type)
+            {
+                switch (type)
+                {
+                    case EDLType.LEFT:
+                        color = Color.LightGreen;
+                        brush = Brushes.LightGreen;
+                        break;
+                    case EDLType.RIGHT:
+                        color = Color.SkyBlue;
+                        brush = Brushes.SkyBlue;
+                        break;
+                    case EDLType.TEST:
+                        color = Color.Yellow;
+                        brush = Brushes.Yellow;
+                        break;
+                }
+            }
+            /// <summary>
+            /// Used to get cartesian coordinates based on module and phase
+            /// </summary>
+            private void SetCartesianPoints()
+            {
+                X = (int)(Math.Sin((VectorPhase * Math.PI) / 180) * VectorModule);
+                Y = -1 * (int)(Math.Cos((VectorPhase * Math.PI) / 180) * VectorModule);
+            }
+            /// <summary>
+            /// Used to obtain the final point of the item line
+            /// </summary>
+            private Point GetFinalItemHeadingPoint(int x, int y)
+            {
+                int tempX = x + (int)(Math.Sin((Heading * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+                int tempY = y - (int)(Math.Cos((Heading * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+
+                return new Point(tempX, tempY);
+            }
+        }
         public HSDForm(Main main)
         {
             this.main = main;
@@ -61,9 +157,14 @@ namespace JoinFS.Forms
             rng = ERange.D8;
             selfData = new InfoData();
 
+            Items = new List<DataLinkItem>();
+
+            RightDL = new string[] { "00", "00", "00", "00" };
+            LeftDL = new string[] { "00", "00", "00", "00" };
+            rotation = 0;
+
             RefreshWindow();
         }
-
         private void SetBackgroundImage()
         {
             pictureBoxBackground.Image = JoinFS.Properties.Resources.HSD_background;
@@ -120,46 +221,36 @@ namespace JoinFS.Forms
                     if (isOnTest)
                         TestPos();
 
-                    CheckAircrafts(Aircrafts);
+                    if(!isOnTest)
+                        CheckAircrafts(Aircrafts);
 
                     if(selfEntity != null)
                         SetHSDRotation();
 
                     if (selfEntity != null)
                         SetSelfLabels();
-
+                    
+                    foreach (DataLinkItem item in Items)
+                        item.DrawText(rotation);
+                    
                     SetSelfOnHSD();
                 }
             }
         }
+        /// <summary>
+        /// Used to check DL items
+        /// </summary>
         private void TestPos()
         {
-            Graphics gr = Graphics.FromImage(pictureBoxBackground.Image);
+            Items.Clear();
+
             int[] temp = testDL.GetItem();
-
-            using (Pen pen = new Pen(Color.Yellow, 1))
-            {
-                gr.DrawEllipse(pen, new Rectangle(150 + temp[0] - (DL_ITEM_RADIUS / 2), 150 + temp[1] - (DL_ITEM_RADIUS / 2), DL_ITEM_RADIUS, DL_ITEM_RADIUS));
-            }
-            using (Pen pen = new Pen(Color.Yellow, 2))
-            {
-                gr.DrawLine(pen, new Point(150 + temp[0], 150 + temp[1]), GetFinalItemHeadingPoint(150 + temp[0], 150 + temp[1], temp[2]));
-            }
-        }
-        /// <summary>
-        /// Used to obtain the final point of the item line
-        /// </summary>
-        private Point GetFinalItemHeadingPoint(int x, int y, int bearing)
-        {
-            int tempX = x + (int)(Math.Sin((bearing * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
-            int tempY = y - (int)(Math.Cos((bearing * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
-            Console.WriteLine("X: " + (Math.Sin((bearing * Math.PI) / 180) + " Y: " + Math.Cos((bearing * Math.PI) / 180)));
-
-            return new Point(tempX, tempY);
+            Items.Add(new DataLinkItem(temp[0], temp[1], temp[2], "99", "11", pictureBoxBackground, EDLType.TEST));
         }
         private void CheckAircrafts(List<Sim.Aircraft> aircrafts)
         {
             double tacanDist = MAX_TACAN_DISTANCE;
+            Items.Clear();
 
             foreach (Sim.Aircraft aircraft in aircrafts)
             {
@@ -172,22 +263,49 @@ namespace JoinFS.Forms
 
                 if (temp != null)
                 {
-                    // Tacan
-                    if (CheckPairedTacan(temp))
+                    if(temp.IFF_CODE == selfData.IFF_CODE)
                     {
-                        // get distance to aircraft
-                        double d = Vector.GeodesicDistance(aircraft.Position.geo.x, aircraft.Position.geo.z, selfEntity.Position.geo.x, selfEntity.Position.geo.z);
-                        // convert to nautical miles
-                        d *= 0.00053995680346;
+                        // Tacan
+                        if (CheckPairedTacan(temp))
+                        {
+                            // get distance to aircraft
+                            double d = Vector.GeodesicDistance(aircraft.Position.geo.x, aircraft.Position.geo.z, selfEntity.Position.geo.x, selfEntity.Position.geo.z);
+                            // convert to nautical miles
+                            d *= 0.00053995680346;
 
-                        if (d < tacanDist)
-                            tacanDist = d;
+                            if (d < tacanDist)
+                                tacanDist = d;
+                        }
+
+                        // DL
+                        if (CheckPairedDL(temp))
+                            SetItemDL(aircraft, temp);
                     }
                 }
             }
 
             labelDist.Text = (tacanDist != MAX_TACAN_DISTANCE) ? string.Format("dst: {0}nm",tacanDist.ToString("N2")) : "dst: ---nm";
             labelDist.ForeColor = (tacanDist != MAX_TACAN_DISTANCE) ? Color.LawnGreen : labelDist.ForeColor = SystemColors.ButtonHighlight;
+        }
+        private void SetItemDL(Sim.Aircraft aircraft, InfoData infoData)
+        {
+            int module = (int)(140 * Vector.GeodesicDistance(aircraft.Position.geo.x, aircraft.Position.geo.z, selfEntity.Position.geo.x, selfEntity.Position.geo.z) * 0.00053995680346) / (int)rng;
+            int phase = (int)Vector.GeodesicBearing(selfEntity.Position.geo.x, selfEntity.Position.geo.z, aircraft.Position.geo.x, aircraft.Position.geo.z);
+            int heading = (int)(aircraft.Position.angles.y * 180.0 / Math.PI);
+            int fl = (int)Math.Floor((aircraft.Position.geo.y * Sim.FEET_PER_METRE)/1000);
+            EDLType tempType = (LeftDL.Contains(infoData.DL_CODE)) ? EDLType.LEFT : EDLType.RIGHT;
+
+            Items.Add(new DataLinkItem(module, phase, heading, fl.ToString(), infoData.DL_CODE, pictureBoxBackground, tempType));
+        }
+        private bool CheckPairedDL(InfoData data)
+        {
+            if(data.DL_CODE != "00")
+            {
+                return LeftDL.Contains(data.DL_CODE) || RightDL.Contains(data.DL_CODE);
+            } else
+            {
+                return false;
+            }
         }
         private bool CheckPairedTacan(InfoData data)
         {
@@ -219,14 +337,14 @@ namespace JoinFS.Forms
         private void SetHSDRotation()
         {
             Sim.Pos aircraftPosition = selfEntity.Position;
-            int heading = (int)(aircraftPosition.angles.y * 180.0 / Math.PI);
+            rotation = -1*(int)(aircraftPosition.angles.y * 180.0 / Math.PI);
 
             Bitmap rotatedBmp = new Bitmap(pictureBoxBackground.Image.Height, pictureBoxBackground.Image.Width);
             rotatedBmp.SetResolution(pictureBoxBackground.Image.HorizontalResolution, pictureBoxBackground.Image.VerticalResolution);
 
             Graphics g = Graphics.FromImage(rotatedBmp);
             g.TranslateTransform(150, 150);
-            g.RotateTransform(-1*heading);
+            g.RotateTransform(rotation);
             g.TranslateTransform(-150, -150);
             g.DrawImage(pictureBoxBackground.Image, new PointF(0, 0));
 
@@ -246,9 +364,10 @@ namespace JoinFS.Forms
         }
         private void LoadConfig()
         {
-            if (main.hsdConfigForm != null)
+            if (main.hsdConfigForm != null && main.sim != null)
             {
                 main.hsdConfigForm.Show();
+                Hide();
             }
         }
         private void labelRange_Click(object sender, EventArgs e)
@@ -329,6 +448,10 @@ namespace JoinFS.Forms
                     Bearing = bearing;
                     Distance = distance;
                 }
+                /// <summary>
+                /// 
+                /// </summary>
+                /// <returns>0 -> vector module, 1 -> vector phase, 2 -> bearing</returns>
                 public int[] GetInfo()
                 {
                     int[] result = new int[3];
@@ -337,40 +460,36 @@ namespace JoinFS.Forms
                     switch (Position)
                     {
                         case ESide.N:
-                            result[0] = 0;
-                            result[1] = tempDist;
-                            result[1] *= -1;
+                            result[0] = tempDist;
+                            result[1] = 0;
                             break;
                         case ESide.E:
                             result[0] = tempDist;
-                            result[1] = 0;
+                            result[1] = 90;
                             break;
                         case ESide.W:
                             result[0] = tempDist;
-                            result[0] *= -1;
-                            result[1] = 0;
+                            result[1] = 270;
                             break;
                         case ESide.S:
-                            result[0] = 0;
-                            result[1] = tempDist;
+                            result[0] = tempDist;
+                            result[1] = 180;
                             break;
                         case ESide.NE:
-                            result[0] = 0;
-                            result[1] = tempDist;
-                            result[1] *= -1;
+                            result[0] = tempDist;
+                            result[1] = 45;
                             break;
                         case ESide.SE:
                             result[0] = tempDist;
-                            result[1] = 0;
+                            result[1] = 135;
                             break;
                         case ESide.SW:
-                            result[0] = 0;
-                            result[1] = tempDist;
+                            result[0] = tempDist;
+                            result[1] = 225;
                             break;
                         case ESide.NW:
                             result[0] = tempDist;
-                            result[0] *= -1;
-                            result[1] = 0;
+                            result[1] = 315;
                             break;
                     }
 
@@ -401,8 +520,6 @@ namespace JoinFS.Forms
                             result[2] = 315;
                             break;
                     }
-
-                    Console.WriteLine("Position of: " + Position + " Bearing: " + result[2]);
 
                     return result;
                 }

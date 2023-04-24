@@ -38,6 +38,16 @@ namespace JoinFS.Forms
                 textBoxTCN.Text = main.hsdForm.selfData.AA_TCN.Substring(0, 2);
                 radioButtonX.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "X";
                 radioButtonY.Checked = main.hsdForm.selfData.AA_TCN.Substring(2, 1) == "Y";
+
+                textBoxRight0.Text = main.hsdForm.RightDL[0];
+                textBoxRight1.Text = main.hsdForm.RightDL[1];
+                textBoxRight2.Text = main.hsdForm.RightDL[2];
+                textBoxRight3.Text = main.hsdForm.RightDL[3];
+
+                textBoxLeft0.Text = main.hsdForm.LeftDL[0];
+                textBoxLeft1.Text = main.hsdForm.LeftDL[1];
+                textBoxLeft2.Text = main.hsdForm.LeftDL[2];
+                textBoxLeft3.Text = main.hsdForm.LeftDL[3];
             }
         }
         private void ApplyChanges()
@@ -154,6 +164,7 @@ namespace JoinFS.Forms
             {
                 e.Cancel = true;
                 Hide();
+                main.hsdForm.Show();
             }
         }
 
@@ -180,6 +191,45 @@ namespace JoinFS.Forms
         private void radioButtonY_Leave(object sender, EventArgs e)
         {
             CheckTCN();
+        }
+
+        private void textBoxDLCodes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                TextBox temp = sender as TextBox;
+                SetDLCodes(temp);
+            }
+                
+        }
+        private void textBoxDLCodes_Leave(object sender, EventArgs e)
+        {
+            TextBox temp = sender as TextBox;
+            SetDLCodes(temp);
+        }
+        private void SetDLCodes(TextBox temp)
+        {
+            if (Int32.TryParse(temp.Text, out int value))
+            {
+                while (temp.Text.Length < 2)
+                {
+                    temp.Text = "0" + temp.Text;
+                }
+
+                main.hsdForm.RightDL[0] = textBoxRight0.Text;
+                main.hsdForm.RightDL[1] = textBoxRight1.Text;
+                main.hsdForm.RightDL[2] = textBoxRight2.Text;
+                main.hsdForm.RightDL[3] = textBoxRight3.Text;
+
+                main.hsdForm.LeftDL[0] = textBoxLeft0.Text;
+                main.hsdForm.LeftDL[1] = textBoxLeft1.Text;
+                main.hsdForm.LeftDL[2] = textBoxLeft2.Text;
+                main.hsdForm.LeftDL[3] = textBoxLeft3.Text;
+            }
+            else
+            {
+                LoadValues();
+            }
         }
     }
 }

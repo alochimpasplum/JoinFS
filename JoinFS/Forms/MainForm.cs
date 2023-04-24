@@ -162,7 +162,8 @@ namespace JoinFS
                     else
                     {
                         //string sc = Program.Code("http://joinfs.net/version", true, 1234);
-                        versionWebClient.DownloadStringAsync(new Uri(Program.Code(@"K^x9E`;gZ2&:s={%T5zSw:cDz", false, 1234)));
+                        //versionWebClient.DownloadStringAsync(new Uri(Program.Code(@"K^x9E`;gZ2&:s={%T5zSw:cDz", false, 1234)));
+                        versionWebClient.DownloadStringAsync(new Uri("https://www.edavirtual.org/joinfsso/version.html"));
                     }
                 }
                 catch (Exception ex)
@@ -615,7 +616,8 @@ namespace JoinFS
                 if (latestVersion.Length > 0 && latestVersion.Equals(Main.version) == false)
                 {
                     // check if this version has been asked about
-                    if (Settings.Default.AskVersion.Equals(latestVersion) == false)
+                    // if (Settings.Default.AskVersion.Equals(latestVersion) == false)
+                    if (true)
                     {
                         DialogResult result = MessageBox.Show(Resources.strings.NewVersion, Main.name + ": New Version", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
@@ -631,7 +633,9 @@ namespace JoinFS
                             {
                                 // open install page
                                 //string sc = Program.Code("https://joinfs.net/install.html", true, 1234);
-                                Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                                // Main.LaunchEncoded(@"v[AwH+#Ci&+4m>(]qFf*y=}AgPm(?K_");
+                                // TODO: Enconde this
+                                Main.Launch(@"https://1drv.ms/f/s!AvneQCwHfSBuooJJHNETRlC133oNGw");
                             }
                             // shutdown
                             main.shutdown = "";
