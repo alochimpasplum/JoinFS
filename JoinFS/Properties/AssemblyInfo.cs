@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JoinFS(SO)")]
+[assembly: AssemblyTitle("JoinFS-SO")]
 [assembly: AssemblyDescription("Multiplayer Across Flight Simulators")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
