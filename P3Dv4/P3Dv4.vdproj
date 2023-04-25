@@ -184,12 +184,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AFB413FE53E60DD489888A71147B9F4F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C7B7D9BA879A41E89E1C48D782C4DD7B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -247,6 +241,12 @@
         "OwnerKey" = "8:_7068FDDDA1B24DB336859B22BDDF2065"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AFB413FE53E60DD489888A71147B9F4F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -265,6 +265,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -281,6 +289,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -696,15 +712,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:JoinFS(SO) - P3Dv4"
-        "ProductCode" = "8:{8274DD0A-3A48-402E-8753-9D8FD0A02FF5}"
-        "PackageCode" = "8:{E3C77095-A6BC-418F-8F5F-DA3C8C95E90C}"
+        "ProductCode" = "8:{0AED272D-9D4C-4207-956F-8344C6E10DD5}"
+        "PackageCode" = "8:{D15ADC2C-5587-40F7-A753-5E2A8E5CFF8B}"
         "UpgradeCode" = "8:{F970F9A9-F41C-42E6-8451-84CD9B32BA9A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:4.0.0"
+        "ProductVersion" = "8:4.0.1"
         "Manufacturer" = "8:Ejercito del Aire virtual"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:joinfs-so.edavirtual.org"

@@ -80,9 +80,9 @@ namespace JoinFS.Forms
                 
                 SetColors(type);
                 SetCartesianPoints();
-                DrawSelf();
+                //DrawSelf();
             }
-            public void DrawSelf()
+            public void DrawSelf(int rotation)
             {
                 using (Graphics gr = Graphics.FromImage(pictureBoxHSD.Image))
                 {
@@ -92,14 +92,15 @@ namespace JoinFS.Forms
                     }
                     using (Pen pen = new Pen(color, 2))
                     {
-                        gr.DrawLine(pen, new Point(150 + X, 150 + Y), GetFinalItemHeadingPoint(150 + X, 150 + Y));
+                        gr.DrawLine(pen, new Point(150 + X, 150 + Y), GetFinalItemHeadingPoint(150 + X, 150 + Y, rotation));
                     }
                 }
             }
             public void DrawText(int rotation)
             {
-                VectorPhase += rotation;
+                //VectorPhase += rotation;
                 SetCartesianPoints();
+                DrawSelf(rotation);
 
                 using (Graphics gr = Graphics.FromImage(pictureBoxHSD.Image))
                 using (Font font = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Pixel))
@@ -137,10 +138,10 @@ namespace JoinFS.Forms
             /// <summary>
             /// Used to obtain the final point of the item line
             /// </summary>
-            private Point GetFinalItemHeadingPoint(int x, int y)
+            private Point GetFinalItemHeadingPoint(int x, int y, int rotation)
             {
-                int tempX = x + (int)(Math.Sin((Heading * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
-                int tempY = y - (int)(Math.Cos((Heading * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+                int tempX = x + (int)(Math.Sin(((Heading + rotation) * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
+                int tempY = y - (int)(Math.Cos(((Heading + rotation) * Math.PI) / 180) * DL_ITEM_HEADING_SIZE);
 
                 return new Point(tempX, tempY);
             }
